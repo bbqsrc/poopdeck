@@ -1,5 +1,6 @@
 var Twit = require('twit'),
     moment = require('moment'),
+    colors = require('colors'),
     MongoClient = require('mongodb').MongoClient,
     config = require('./config');
 
@@ -16,8 +17,14 @@ function layoutTweetHTML(tweet) {
 }
 
 function layoutTweetLog(tweet, action) {
+    var text = tweet.text.replace(/\n/g, '');
+
+    if (action == "DELETE") {
+        text = text.red.inverse;
+    }
+
     return "[" + formatDate(tweet.created_at, "YYYY-MM-DD HH:mm:ss") + 
-           "][" + action + "][" + tweet.id + "] " + tweet.text;
+           "][" + action + "][" + tweet.id + "] " + text;
 }
    
 function main(db) {
@@ -52,7 +59,7 @@ function main(db) {
         // Unnecessary nesting.
         event = event['delete']['status'];
 
-        events.findOne({id: event.id}, function(err, record) {
+        tweets.findOne({id: event.id}, function(err, record) {
             if (err) console.error(err.stack);
 
             if (record) {
@@ -64,7 +71,7 @@ function main(db) {
             }
         });
         
-        deletes.insert(tweet, function(err) {
+        deletes.insert(event, function(err) {
             if (err) console.error(err.stack);
         });
     });

@@ -4,6 +4,7 @@
   "description": "Simple Twitter moderation tool.",
   "main": "app.js",
   "dependencies": {
+    "colors": "^0.6.2",
     "moment": "^2.7.0",
     "mongodb": "^1.4.7",
     "twit": "^1.1.18"
