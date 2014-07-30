@@ -1,0 +1,25 @@
+{
+  "name": "poopdeck",
+  "version": "0.1.0",
+  "description": "Simple Twitter moderation tool.",
+  "main": "app.js",
+  "dependencies": {
+    "moment": "^2.7.0",
+    "mongodb": "^1.4.7",
+    "twit": "^1.1.18"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bbqsrc/poopdeck"
+  },
+  "author": "",
+  "license": "CC0",
+  "bugs": {
+    "url": "https://github.com/bbqsrc/poopdeck/issues"
+  },
+  "homepage": "https://github.com/bbqsrc/poopdeck"
+}
